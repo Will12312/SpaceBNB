@@ -1,10 +1,10 @@
 class TravelsController < ApplicationController
 
   def destroy
-      @travels = Travel.find(params[:id])
-      @travels.destroy
+      @travel = Travel.find(params[:id])
+      @travel.destroy
 
-      redirect_to travels_path(@booking.travel) ???
+      redirect_to travels_path
     end
 
 end
