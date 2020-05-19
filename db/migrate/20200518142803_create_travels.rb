@@ -5,6 +5,7 @@ class CreateTravels < ActiveRecord::Migration[6.0]
       t.string :destination
       t.integer :number_of_travelers
       t.string :departure_date
+      t.string :name_of_vehicle
 
       t.timestamps
     end
