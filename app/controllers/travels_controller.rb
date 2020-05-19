@@ -21,6 +21,7 @@ class TravelsController < ApplicationController
   end
 
   def index
+    @current_user = current_user
     @travels = Travel.all
   end
 
