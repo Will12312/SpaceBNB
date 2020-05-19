@@ -1,0 +1,6 @@
+
+<ul>
+  <% @bookings.each do |booking| %>
+    <li><%= link_to booking.user_id, booking.travel_id, booking_path(booking.id) %></li>
+  <% end %>
+</ul>

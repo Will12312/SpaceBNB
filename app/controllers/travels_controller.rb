@@ -11,7 +11,8 @@ class TravelsController < ApplicationController
 
   def create
     @travel = Travel.new(travel_params)
-    @travel.save
+    @travel.organiser = current_user
+    raise
     if @travel.save
       redirect_to travel_path(@travel)
     else
@@ -41,7 +42,7 @@ class TravelsController < ApplicationController
    private
 
   def travel_params
-    params.require(:travel).permit(:destination, :number_of_travelers, :departure_date, :name_of_vehicle, :organiser_id )
+    params.require(:travel).permit(:destination, :number_of_travelers, :departure_date, :name_of_vehicle)
   end
 
   def set_travel
