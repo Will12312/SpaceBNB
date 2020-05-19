@@ -8,8 +8,10 @@
 
 require 'faker'
 
+User.destroy_all
+
 10.times do
-  new_user = User.create(
+  new_user = User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     username: Faker::Name.unique.name,
@@ -17,7 +19,7 @@ require 'faker'
     password: Faker::Crypto.md5,
     )
 
-  new_travel = Travel.create(
+  new_travel = Travel.create!(
     destination:["mercury", "venus", "mars", "jupiter", "saturn", "uranus", "neptune", "earth", "pluto"].sample,
     number_of_travelers: rand(1..20),
     departure_date:Faker::Date.forward(days: 100),
