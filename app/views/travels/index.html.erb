@@ -1,0 +1,24 @@
+<div class="navbar">
+  <img src="https://i.pinimg.com/originals/1c/65/73/1c6573b3a499605debb897bfc4d8074f.png" alt="">
+  <h4>SpaceBNB</h4>
+  <img class="avatar" src="https://avatars0.githubusercontent.com/u/59450083?s=460&u=a968262b02616ba9015217afa11b2732e813c5e9&v=4" alt="">
+</div>
+
+<div class ="container">
+<br>
+    <ul>
+      <div class="travel-cards">
+    <% @travels.each do |travel| %>
+      <div class="travel-card">
+        <li><%= link_to("#{travel.name_of_vehicle} is created by #{travel.organiser.first_name}", travel_path(travel)) %></li>
+      </div>
+    <% end %>
+     </div>
+    </ul>
+
+
+  <div class ="button-center">
+   <%= link_to("add a new travel", new_travel_path) %>
+  </div>
+
+</div>

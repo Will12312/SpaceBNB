@@ -8,6 +8,8 @@
 
 require 'faker'
 
+User.destroy_all
+
 10.times do
   new_user = User.create!(
     first_name: Faker::Name.first_name,
