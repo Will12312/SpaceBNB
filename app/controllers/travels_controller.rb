@@ -1,5 +1,9 @@
 class TravelsController < ApplicationController
 
+  def show
+    @travel = Travel.find(params[:id])
+  end
+
   def index
     @travels = Travel.all
   end
@@ -28,4 +32,5 @@ class TravelsController < ApplicationController
     params.require(:travel).permit(:destination, :number_of_travelers, :departure_date, :name_of_vehicle )
   end
   
+
 end
