@@ -9,7 +9,7 @@
 require 'faker'
 
 10.times do
-  new_user = User.create(
+  new_user = User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     username: Faker::Name.unique.name,
