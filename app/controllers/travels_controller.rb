@@ -3,7 +3,6 @@ class TravelsController < ApplicationController
   before_action :set_travel, only: [:show, :edit, :update, :destroy]
 
   def show
-    authorize @travel
   end
 
   def new
@@ -13,7 +12,6 @@ class TravelsController < ApplicationController
   def create
     @travel = Travel.new(travel_params)
     @travel.organiser = current_user
-    raise
     if @travel.save
       redirect_to travel_path(@travel)
     else
@@ -22,7 +20,6 @@ class TravelsController < ApplicationController
   end
 
   def index
-    authorize @travel
     @travels = Travel.all
   end
 
@@ -30,14 +27,12 @@ class TravelsController < ApplicationController
   end
 
   def update
-    record.user == user
     @travel.update(travel_params)
 
     redirect_to travel_path(@travel)
   end
 
   def destroy
-    record.user == user
       @travel.destroy
 
       redirect_to travels_path

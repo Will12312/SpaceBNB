@@ -8,6 +8,6 @@ class ApplicationController < ActionController::Base
 private
 
   def skip_pundit?
-    devise_controller? || params[:controller]
+    devise_controller?
   end
 end
