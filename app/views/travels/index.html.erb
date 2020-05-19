@@ -7,18 +7,34 @@
 <div class ="container">
 <br>
     <ul>
-      <div class="travel-cards">
-    <% @travels.each do |travel| %>
-      <div class="travel-card">
+      <div class="travel-cards" >
+    <% @travels.each do |travel| %>"
+      <div class="travel-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://source.unsplash.com/random)">
         <li><%= link_to("#{travel.name_of_vehicle} is created by #{travel.organiser.first_name}", travel_path(travel)) %></li>
       </div>
     <% end %>
      </div>
     </ul>
-
-
   <div class ="button-center">
    <%= link_to("add a new travel", new_travel_path) %>
   </div>
 
 </div>
+
+<div class="footer">
+  <div class="footer-links">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+  </div>
+  <div class="footer-copyright">
+    SpaceBnB is made with <i class="fas fa-rocket"></i> By Terri, Hugues, Will and Martin
+  </div>
+</div>
+
+
+
+
+
