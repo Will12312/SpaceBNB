@@ -5,15 +5,17 @@
 </div>
 
 <div class ="container">
-  <div class="travel-cards">
+<br>
     <ul>
+      <div class="travel-cards">
     <% @travels.each do |travel| %>
       <div class="travel-card">
         <li><%= link_to("#{travel.name_of_vehicle} is created by #{travel.organiser.first_name}", travel_path(travel)) %></li>
       </div>
     <% end %>
+     </div>
     </ul>
-  </div>
+
 
   <div class ="button-center">
    <%= link_to("add a new travel", new_travel_path) %>

@@ -12,9 +12,13 @@
 }
 
 .travel-cards {
-
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
   .travel-card {
-
+    a {
+      color: black;
+    }
   }
 }
 
