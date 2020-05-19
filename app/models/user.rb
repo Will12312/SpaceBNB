@@ -5,6 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :bookings
-  has_many :travels, foreign_key: :organiser
+  has_many :travels, foreign_key: :organiser, dependent: :destroy
 
 end
