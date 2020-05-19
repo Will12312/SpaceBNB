@@ -8,12 +8,16 @@
   <div>
     <h2><%= "#{@travel.destination} with #{@travel.organiser.username}" %></h2>
     <p> <%= "#{@travel.organiser.first_name} is proposition #{@travel.number_of_travelers} seats in his brand new #{@travel.name_of_vehicle} on the #{@travel.departure_date}" %></p>
-  <div>
+    <br>
+
+   <%= link_to("book this trip", bookings_path(@travel)) %>
+
+  <br>
+
     <%= link_to("Back to list", travels_path) %>
-  </div class = "button-Book">
+
 
   </div>
 
 </div>
-
 

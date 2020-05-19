@@ -9,6 +9,7 @@
 require 'faker'
 
 User.destroy_all
+Travel.destroy_all
 
 10.times do
   new_user = User.create!(

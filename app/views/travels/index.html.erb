@@ -10,7 +10,7 @@
       <div class="travel-cards">
     <% @travels.each do |travel| %>
       <div class="travel-card">
-        <li><%= link_to("#{travel.name_of_vehicle} is created by #{travel.organiser.first_name}", travel_path(travel)) %></li>
+        <li><%= link_to("#{travel.name_of_vehicle} is created by #{travel.organiser.username}", travel_path(travel)) %></li>
       </div>
     <% end %>
      </div>
@@ -20,5 +20,10 @@
   <div class ="button-center">
    <%= link_to("add a new travel", new_travel_path) %>
   </div>
+<br>
+  <div class ="button-center">
+   <%= link_to("my bookings", bookings_path) %>
+  </div>
 
 </div>
+
