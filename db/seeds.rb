@@ -17,7 +17,7 @@ require 'faker'
     password: Faker::Crypto.md5,
     )
 
-  new_travel = Travel.create(
+  new_travel = Travel.create!(
     destination:["mercury", "venus", "mars", "jupiter", "saturn", "uranus", "neptune", "earth", "pluto"].sample,
     number_of_travelers: rand(1..20),
     departure_date:Faker::Date.forward(days: 100),
