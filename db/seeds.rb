@@ -20,10 +20,10 @@ User.destroy_all
     )
 
   new_travel = Travel.create!(
-    destination:["mercury", "venus", "mars", "jupiter", "saturn", "uranus", "neptune", "earth", "pluto"].sample,
+    destination:["Mercury", "Venus", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune", "Earth", "pluto"].sample,
     number_of_travelers: rand(1..20),
     departure_date:Faker::Date.forward(days: 100),
-    organiser_id: rand(1..10),
+    organiser: new_user,
     name_of_vehicle:Faker::Movies::StarWars.vehicle
     )
 end
