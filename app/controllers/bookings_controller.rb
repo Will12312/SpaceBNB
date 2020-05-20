@@ -11,6 +11,8 @@ class BookingsController < ApplicationController
     @booking = Booking.new
     @travel = Travel.find(params[:travel_id])
     @booking.travel = @travel
+    @booking.user = current_user
+    raise
     @booking.save
     redirect_to bookings_path(@travel)
   end
