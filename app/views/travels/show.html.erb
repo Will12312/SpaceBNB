@@ -15,7 +15,7 @@
             <img src="https://www.forbes.fr/wp-content/uploads/2019/12/960x0-11-e1576486629882-740x370.jpg" alt="">
   <% end %>
   <div class="card-product-infos">
-    <h2><%= "#{@travel.destination} with #{@travel.organiser.username}" %></h2>
+    <h2><%= "#{@travel.destination} for #{@travel.first_name}" %></h2>
     <p><%= "#{@travel.organiser.first_name} is proposition #{@travel.number_of_travelers} seats in his brand new #{@travel.name_of_vehicle} on the #{@travel.departure_date}" %></p>
   </div>
 </div>
