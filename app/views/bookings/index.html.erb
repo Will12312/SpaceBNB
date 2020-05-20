@@ -2,6 +2,9 @@
 <ul>
   <% @bookings.each do |booking| %>
     <li><%= "#{booking.user.first_name} is going to #{booking.travel.destination}" %></li>
+    <% if policy(Booking).destroy? %>
+   <%= link_to("delete the booking", booking_path(booking), method: :delete) %>
+   <%end%>
   <% end %>
 </ul>
 <br>
