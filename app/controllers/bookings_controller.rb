@@ -4,16 +4,20 @@ class BookingsController < ApplicationController
   before_action :set_travel, only:[:new, :create]
 
   def index
-    @bookings = Booking.where(user: current_user)
+    @bookings = policy_scope(Booking).order(created_at: :desc)
     #only for a user
   end
 
   def new
+    authorize @booking
   end
 
   def create
     @booking.travel = @travel
     @booking.user = current_user
+
+    authorize @booking
+
     if @booking.save
       redirect_to root_path
       #flashes to warn the user
@@ -27,6 +31,7 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking.destroy
+    authorize @booking
     redirect_to travel_path(@booking.travel)
   end
 
@@ -39,6 +44,7 @@ class BookingsController < ApplicationController
   def set_travel
     @booking = Booking.new
     @travel = Travel.find(params[:travel_id])
+    authorize @booking
   end
 
 end
