@@ -1,6 +1,8 @@
-
+<h1>my bookings</h1>
 <ul>
   <% @bookings.each do |booking| %>
-    <li><%= link_to booking.user_id, booking.travel_id, booking_path(booking.id) %></li>
+    <li><%= "#{booking.user.first_name} is going to #{booking.travel.destination}" %></li>
   <% end %>
 </ul>
+<br>
+<%= link_to("Back to all travels", travels_path) %>

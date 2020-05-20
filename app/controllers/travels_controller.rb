@@ -1,5 +1,6 @@
 class TravelsController < ApplicationController
 
+  skip_before_action :authenticate_user!, only: [:show, :index]
   before_action :set_travel, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -7,7 +8,6 @@ class TravelsController < ApplicationController
   end
 
   def show
-
   end
 
   def new
@@ -18,14 +18,15 @@ class TravelsController < ApplicationController
   def create
     @travel = Travel.new(travel_params)
     @travel.organiser = current_user
+
     authorize @travel
+
     if @travel.save
       redirect_to travel_path(@travel)
     else
       render :new
     end
   end
-
 
   def edit
   end

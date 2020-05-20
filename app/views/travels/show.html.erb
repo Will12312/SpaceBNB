@@ -6,14 +6,31 @@
 
 <div class = "container">
   <div>
+    <br>
+
+<div class="card-product">
+  <img src="https://source.unsplash.com/random" />
+  <div class="card-product-infos">
     <h2><%= "#{@travel.destination} with #{@travel.organiser.username}" %></h2>
-    <p> <%= "#{@travel.organiser.first_name} is proposition #{@travel.number_of_travelers} seats in his brand new #{@travel.name_of_vehicle} on the #{@travel.departure_date}" %></p>
-  <div>
-    <%= link_to("Back to list", travels_path) %>
-  </div class = "button-Book">
-
+    <p><%= "#{@travel.organiser.first_name} is proposition #{@travel.number_of_travelers} seats in his brand new #{@travel.name_of_vehicle} on the #{@travel.departure_date}" %></p>
   </div>
-
 </div>
 
+   <%= link_to("book this trip", new_travel_booking_path(@travel)) %>
 
+  <br>
+
+    <%= link_to("Back to list", travels_path) %>
+
+<div class="footer">
+  <div class="footer-links">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+  </div>
+  <div class="footer-copyright">
+    SpaceBnB is made with <i class="fas fa-rocket"></i> By Terri, Hugues, Will and Martin
+  </div>
+</div>
