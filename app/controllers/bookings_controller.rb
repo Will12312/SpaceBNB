@@ -4,7 +4,7 @@ class BookingsController < ApplicationController
   before_action :set_travel, only:[:new, :create]
 
   def index
-    @bookings = Booking.all
+    @bookings = Booking.where(user: current_user)
     #only for a user
   end
 
