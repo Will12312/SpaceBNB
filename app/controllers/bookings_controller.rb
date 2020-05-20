@@ -5,7 +5,6 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = policy_scope(Booking).order(created_at: :desc)
-    #only for a user
   end
 
   def new
@@ -19,7 +18,7 @@ class BookingsController < ApplicationController
     authorize @booking
 
     if @booking.save
-      redirect_to root_path
+      redirect_to bookings_path
       #flashes to warn the user
     else
       render :new
@@ -32,7 +31,7 @@ class BookingsController < ApplicationController
   def destroy
     @booking.destroy
     authorize @booking
-    redirect_to travel_path(@booking.travel)
+    redirect_to travels_path
   end
 
   private
