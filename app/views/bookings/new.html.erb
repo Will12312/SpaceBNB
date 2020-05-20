@@ -4,6 +4,10 @@
   <img class="avatar" src="https://avatars0.githubusercontent.com/u/59450083?s=460&u=a968262b02616ba9015217afa11b2732e813c5e9&v=4" alt="">
 </div>
 
+ <%="#{@travel.destination} #{@travel.departure_date}"%>
+
 <%= simple_form_for [@travel, @booking] do |f| %>
-  <%= f.submit %>
+ <%= f.submit "Confirm your trip?", class: "btn btn-primary" %>
 <% end %>
+<br>
+<%= link_to("Cancel?", travel_path(@travel)) %>
