@@ -3,26 +3,29 @@ class TravelsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show, :index]
   before_action :set_travel, only: [:show, :edit, :update, :destroy]
 
+  def index
+    @travels = policy_scope(Travel).order(created_at: :desc)
+  end
+
   def show
   end
 
   def new
     @travel = Travel.new
+    authorize @travel #not sure where to put this line
   end
 
   def create
     @travel = Travel.new(travel_params)
     @travel.organiser = current_user
+
+    authorize @travel
+
     if @travel.save
       redirect_to travel_path(@travel)
     else
       render :new
     end
-  end
-
-  def index
-    @current_user = current_user
-    @travels = Travel.all
   end
 
   def edit
@@ -48,6 +51,7 @@ class TravelsController < ApplicationController
 
   def set_travel
     @travel = Travel.find(params[:id])
+    authorize @travel
   end
 
 end
