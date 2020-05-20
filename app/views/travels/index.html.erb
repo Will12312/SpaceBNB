@@ -11,6 +11,9 @@
     <% @travels.each do |travel| %>
       <div class="travel-card">
         <li><%= link_to("#{travel.name_of_vehicle} is created by #{travel.organiser.first_name}", travel_path(travel)) %></li>
+        <% if policy(travel).edit?%>
+        <%= link_to "Update", edit_travel_path(travel) %>
+        <% end %>
       </div>
     <% end %>
      </div>
@@ -18,7 +21,9 @@
 
 
   <div class ="button-center">
+    <% if policy(Travel).create? %>
    <%= link_to("add a new travel", new_travel_path) %>
+   <%end%>
   </div>
 
 </div>
