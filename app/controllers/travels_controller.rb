@@ -39,7 +39,7 @@ class TravelsController < ApplicationController
 
   def destroy
       @travel.destroy
-
+      authorize @travel
       redirect_to travels_path
   end
 
