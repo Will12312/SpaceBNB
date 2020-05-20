@@ -9,7 +9,7 @@
     <br>
 
 <div class="card-product">
-  <img src="https://source.unsplash.com/random" />
+  <%= cl_image_tag @travel.photo.key, height: 300, width: 400, crop: :fill %>
   <div class="card-product-infos">
     <h2><%= "#{@travel.destination} with #{@travel.organiser.username}" %></h2>
     <p><%= "#{@travel.organiser.first_name} is proposition #{@travel.number_of_travelers} seats in his brand new #{@travel.name_of_vehicle} on the #{@travel.departure_date}" %></p>
