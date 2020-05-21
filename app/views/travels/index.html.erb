@@ -7,6 +7,15 @@
 
 <div class ="container">
 
+  <%= form_tag travels_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Search your next destination..."
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+
 <br>
     <ul>
       <div class="travel-cards" >
