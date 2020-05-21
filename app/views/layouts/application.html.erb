@@ -11,11 +11,22 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
-  <body>
+  <body >
     <%= yield %>
 
        <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
 
+<div class="footer" style = "background: linear-gradient(135deg, #FFFFFF 0%, #EA5EDC 21%, #1E004C 100%)">
+  <div class="footer-links">
+    <a href="#"><i class="fab fa-github" style="color: black;"></i></a>
+    <a href="#"><i class="fab fa-instagram" style="color: black;"></i></a>
+    <a href="#"><i class="fab fa-facebook" style="color: white;"></i></a>
+    <a href="#"><i class="fab fa-twitter" style="color: white;"></i></a>
+    <a href="#"><i class="fab fa-linkedin" style="color: white;"></i></a>
+  </div>
+  <div class="footer-copyright" style="color: white;">
+    SpaceBnB is made with <i class="fas fa-rocket"></i> By Terri, Hugues, Will and Martin
+  </div>
   </body>
 </html>
