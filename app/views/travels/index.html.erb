@@ -6,16 +6,21 @@
 </div>
 
 <div class ="container">
-  <br>
-  <ul>
-    <div class="travel-cards" >
-      <% @travels.each do |travel| %>
 
+<br>
+    <ul>
+      <div class="travel-cards" >
+    <% @travels.each do |travel| %>
       <div class="travel-card" >
-        <img src="https://www.forbes.fr/wp-content/uploads/2019/12/960x0-11-e1576486629882-740x370.jpg">
+         <% if travel.photo.attached? %>
+          <%= cl_image_tag(travel.photo.key, height: 300, width: 400, crop: :fill) %>
+           <% else %>
+            <img src="https://www.forbes.fr/wp-content/uploads/2019/12/960x0-11-e1576486629882-740x370.jpg" alt="">
+          <% end %>
         <li><%= link_to("#{travel.name_of_vehicle} for #{travel.destination}", travel_path(travel)) %></li>
         <% if policy(travel).edit?%>
         <%= link_to "Update", edit_travel_path(travel) %>
+        <%= link_to("Delete", travel_path(travel), method: :delete) %>
         <% end %>
       </div>
       <% end %>
