@@ -18,7 +18,7 @@
   <% end %>
   <div class="card-top-infos">
     <h2><%= link_to("#{travel.destination} for #{travel.organiser.first_name}", travel_path(travel)) %></h2>
-    <p><%= "#{travel.organiser.first_name} is proposition #{travel.number_of_travelers} seats in his brand new #{travel.name_of_vehicle} on the #{travel.departure_date}" %></p>
+    <p><%= "#{travel.organiser.first_name} is proposition #{travel.seats_available} seats in his brand new #{travel.name_of_vehicle} on the #{travel.departure_date}" %></p>
   </div>
 </div>
 <%end%>
