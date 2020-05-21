@@ -18,7 +18,6 @@ class TravelsController < ApplicationController
   def create
     @travel = Travel.new(travel_params)
     @travel.organiser = current_user
-
     authorize @travel
 
     if @travel.save
@@ -46,7 +45,7 @@ class TravelsController < ApplicationController
    private
 
   def travel_params
-    params.require(:travel).permit(:destination, :number_of_travelers, :departure_date, :name_of_vehicle, :photo)
+    params.require(:travel).permit(:destination, :seats_available, :price, :departure_date, :name_of_vehicle, :photo)
   end
 
   def set_travel

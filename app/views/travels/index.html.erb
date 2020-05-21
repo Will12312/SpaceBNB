@@ -16,8 +16,12 @@
            <% else %>
             <img src="https://www.forbes.fr/wp-content/uploads/2019/12/960x0-11-e1576486629882-740x370.jpg" alt="">
           <% end %>
-        <li><%= link_to("#{travel.name_of_vehicle} for #{travel.destination}", travel_path(travel)) %></li>
-        <% if policy(travel).edit?%>
+          <% if travel.seats_available > 0 %>
+            <li><%= link_to("#{travel.name_of_vehicle} for #{travel.destination}. Price : #{travel.price}. Places remaining : #{travel.seats_available}", travel_path(travel)) %></li>
+          <% else %>
+           <li> <%= "#{travel.name_of_vehicle} for #{travel.destination}. Price : #{travel.price}. Sold out !" %>   </li>
+          <% end %>
+          <% if policy(travel).edit?%>
         <%= link_to "Update", edit_travel_path(travel) %>
         <%= link_to("Delete", travel_path(travel), method: :delete) %>
         <% end %>
