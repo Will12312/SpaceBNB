@@ -48,6 +48,7 @@ class TravelsController < ApplicationController
       redirect_to travels_path
   end
 
+
    private
 
   def travel_params
