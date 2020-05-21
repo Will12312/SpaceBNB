@@ -6,9 +6,5 @@ class User < ApplicationRecord
 
   has_many :bookings
   has_many :travels, foreign_key: :organiser, dependent: :destroy
-  validates :email, presence: true
-  validates :username, presence: true
-  validates :first_name, presence: true
-  validates :last_name, presence: true
 
 end
