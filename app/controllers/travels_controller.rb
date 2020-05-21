@@ -51,7 +51,7 @@ class TravelsController < ApplicationController
    private
 
   def travel_params
-    params.require(:travel).permit(:destination, :seats_available, :price, :departure_date, :name_of_vehicle, :photo)
+    params.require(:travel).permit(:destination, :seats_available, :price, :departure_date, :name_of_vehicle, :photo, :address)
   end
 
   def set_travel
