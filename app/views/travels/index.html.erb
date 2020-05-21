@@ -1,4 +1,4 @@
-<div class="navbar">
+<div class="navbar"  style="background: url('https://images.pexels.com/photos/956981/milky-way-starry-sky-night-sky-star-956981.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')">
   <div>
     <img src="https://i.pinimg.com/originals/1c/65/73/1c6573b3a499605debb897bfc4d8074f.png" alt="">
   </div>
@@ -43,17 +43,26 @@
       <div class="travel-cards" >
     <% @travels.each do |travel| %>
       <div class="travel-card" >
-         <% if travel.photo.attached? %>
-          <%= cl_image_tag(travel.photo.key, height: 300, width: 400, crop: :fill) %>
-           <% else %>
-            <img src="https://www.forbes.fr/wp-content/uploads/2019/12/960x0-11-e1576486629882-740x370.jpg" alt="">
-          <% end %>
           <% if travel.seats_available > 0 %>
-            <li><%= link_to("#{travel.name_of_vehicle} for #{travel.destination}.
-            Price : #{travel.price}.
-            Places remaining : #{travel.seats_available}.
-            Days before departure : #{(travel.departure_date - Date.today).to_i} days.",
-            travel_path(travel)) %></li>
+            <li>
+              <%= link_to travel_path(travel) do %>
+                <div class="card-img">
+                  <% if travel.photo.attached? %>
+                    <%= cl_image_tag(travel.photo.key, height: 300, width: 400, crop: :fill) %>
+                  <% else %>
+                    <img src="https://www.forbes.fr/wp-content/uploads/2019/12/960x0-11-e1576486629882-740x370.jpg" alt="">
+                  <% end %>
+                </div>
+                <div class="card-info">
+                  <p id="spaceship-name"> <%= "#{travel.name_of_vehicle} for #{travel.destination}."%></p>
+                  <p> <%= "Days before departure : #{(travel.departure_date - Date.today).to_i} days." %></p>
+                  <div class="card-info-flex">
+                    <p><%= "Places remaining : #{travel.seats_available}."%></p>
+                    <p><%= "Price : #{travel.price}."%></p>
+                  </div>
+                </div>
+              <% end %>
+            </li>
           <% else %>
            <li> <%= "#{travel.name_of_vehicle} for #{travel.destination}. Price : #{travel.price}. Sold out !" %>   </li>
           <% end %>
