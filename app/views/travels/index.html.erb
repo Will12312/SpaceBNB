@@ -26,6 +26,18 @@
 
 <div class ="container">
 
+<div class="search-form-control form-group">
+<%= form_tag travels_path, method: :get %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Search your next destination..."%>
+  <%= button_tag type: 'submit', class: "btn btn-flat", id: "register-button" do %>
+    <i class="fas fa-search" aria-hidden="true"></i> Search
+<% end %>
+</div>
+
+
 <br>
     <ul>
       <div class="travel-cards" >
