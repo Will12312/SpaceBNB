@@ -47,9 +47,11 @@ ActiveRecord::Schema.define(version: 2020_05_20_160903) do
 
   create_table "travels", force: :cascade do |t|
     t.string "destination"
-    t.integer "number_of_travelers"
+    t.integer "seats_available"
+    t.integer "people_onboard", default: 0
     t.string "departure_date"
     t.string "name_of_vehicle"
+    t.integer "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "organiser_id"

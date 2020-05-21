@@ -5,6 +5,7 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = policy_scope(Booking).order(created_at: :desc)
+    @travels = Travel.where(organiser:current_user)
   end
 
   def new
@@ -19,6 +20,10 @@ class BookingsController < ApplicationController
 
     if @booking.save
       redirect_to bookings_path
+      @travel = Travel.find(params[:travel_id])
+      @travel.seats_available -= 1
+      @travel.people_onboard += 1
+      @travel.save
       #flashes to warn the user
     else
       render :new
@@ -30,6 +35,10 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking.destroy
+    @travel = @booking.travel
+    @travel.seats_available += 1
+    @travel.people_onboard -= 1
+    @travel.save
     authorize @booking
     redirect_to travels_path
   end

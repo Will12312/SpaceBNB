@@ -9,10 +9,14 @@
     <br>
 
 <div class="card-product">
-  <%= cl_image_tag @travel.photo.key, height: 300, width: 400, crop: :fill %>
+<% if @travel.photo.attached? %>
+          <%= cl_image_tag(@travel.photo.key, height: 300, width: 400, crop: :fill) %>
+           <% else %>
+            <img src="https://www.forbes.fr/wp-content/uploads/2019/12/960x0-11-e1576486629882-740x370.jpg" alt="">
+  <% end %>
   <div class="card-product-infos">
-    <h2><%= "#{@travel.destination} with #{@travel.organiser.username}" %></h2>
-    <p><%= "#{@travel.organiser.first_name} is proposition #{@travel.number_of_travelers} seats in his brand new #{@travel.name_of_vehicle} on the #{@travel.departure_date}" %></p>
+    <h2><%= "#{@travel.destination} for #{@travel.organiser.first_name}" %></h2>
+    <p><%= "#{@travel.organiser.first_name} is proposition #{@travel.seats_available} seats in his brand new #{@travel.name_of_vehicle} on the #{@travel.departure_date}" %></p>
   </div>
 </div>
 

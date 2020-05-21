@@ -23,10 +23,19 @@ Travel.destroy_all
   new_travel = Travel.create!(
     adress:Faker::Address.street_address
     destination:["Mercury", "Venus", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune", "Earth", "pluto"].sample,
-    number_of_travelers: rand(1..20),
+    seats_available: rand(1..20),
     departure_date:Faker::Date.forward(days: 100),
     organiser: new_user,
-    name_of_vehicle:Faker::Movies::StarWars.vehicle
+    name_of_vehicle:Faker::Movies::StarWars.vehicle,
+    price: rand(100..1000)
     )
 end
 
+  william = User.create!(
+    first_name: "william",
+    last_name: "guillerm",
+    username: "williamguillerm",
+    email: "william@guillerm.com",
+    password: "william",
+    admin: true
+    )
