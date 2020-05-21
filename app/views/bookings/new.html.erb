@@ -5,7 +5,11 @@
 </div>
 <div>
   <div class="card-booking" style=" padding:100px; background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0)); url: ""; >
-  <%= cl_image_tag(@travel.photo.key) %>
+      <% if @travel.photo.attached? %>
+        <%= cl_image_tag(@travel.photo.key, height: 300, width: 400, crop: :fill) %>
+      <% else %>
+        <img src="https://www.forbes.fr/wp-content/uploads/2019/12/960x0-11-e1576486629882-740x370.jpg" alt="">
+        <% end %>
   <div class="footer" style=" padding:100px; color: black; border-radius: 0px 0px 5px 5px ">
     <div>
       <br>
