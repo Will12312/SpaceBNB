@@ -2,12 +2,12 @@
   <div class="container">
     <h1>SpaceBnB brings closer the Outer Space!</h1>
     <p>Travel throught Space just in a clik.</p>
-    <a class="btn btn-flat"<%= link_to("All travels", travels_path) %>></a>
+    <a class="btn btn-flat"<%= link_to("All travels", travels_path)%>></a>
   </div>
 </div>
 
-<div class="container">
-  <h2>Willing to leave ?</h2>
+<div class="container-display">
+  <h2>Going Somewhere at speed light?</h2>
 <div class="container-top">
 <% Travel.last(9).each do |travel| %>
 <div class="card-top">
