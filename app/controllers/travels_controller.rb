@@ -43,9 +43,6 @@ class TravelsController < ApplicationController
       redirect_to travels_path
   end
 
-  def latest
-    @travels = Travel.last(10)
-  end
 
    private
 
