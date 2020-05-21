@@ -7,4 +7,11 @@ class Travel < ApplicationRecord
   validates :address, presence: true
   has_one_attached :photo
 
+   include PgSearch::Model
+  pg_search_scope :search_by_destination_and_name_of_vehicle,
+    against: [ :destination, :name_of_vehicle ],
+    using: {
+      tsearch: { prefix: true }
+    }
+
 end

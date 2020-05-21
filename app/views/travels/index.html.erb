@@ -1,24 +1,68 @@
-<div class="navbar">
-  <img src="https://i.pinimg.com/originals/1c/65/73/1c6573b3a499605debb897bfc4d8074f.png" alt="">
-  <h4>SpaceBNB</h4>
-  <p>Market place for your <strong>Sol System</strong> voyage</p>
-  <img class="avatar" src="https://avatars0.githubusercontent.com/u/59450083?s=460&u=a968262b02616ba9015217afa11b2732e813c5e9&v=4" alt="">
+<div class="navbar"  style="background: url('https://images.pexels.com/photos/956981/milky-way-starry-sky-night-sky-star-956981.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')">
+  <div>
+    <img src="https://i.pinimg.com/originals/1c/65/73/1c6573b3a499605debb897bfc4d8074f.png" alt="">
+  </div>
+  <div>
+    <h4>SpaceBNB</h4>
+  </div>
+  <div class="right-navbar">
+    <% if user_signed_in? %>
+      <%= link_to("sign out",  destroy_user_session_path, method: :delete) %>
+      <img class="avatar" src="https://avatars0.githubusercontent.com/u/59450083?s=460&u=a968262b02616ba9015217afa11b2732e813c5e9&v=4" alt="">
+    <% else %>
+      <%= link_to("sign in", new_user_session_path) %>
+      <%= link_to("sign up", new_user_registration_path) %>
+    <% end %>
+
+  </div>
+
 </div>
 
+
+
+
+
+
+
 <div class ="container">
+
+<div class="search-form-control form-group">
+<%= form_tag travels_path, method: :get %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Search your next destination..."%>
+  <%= button_tag type: 'submit', class: "btn btn-flat", id: "register-button" do %>
+    <i class="fas fa-search" aria-hidden="true"></i> Search
+<% end %>
+</div>
+
 
 <br>
     <ul>
       <div class="travel-cards" >
     <% @travels.each do |travel| %>
       <div class="travel-card" >
-         <% if travel.photo.attached? %>
-          <%= cl_image_tag(travel.photo.key, height: 300, width: 400, crop: :fill) %>
-           <% else %>
-            <img src="https://www.forbes.fr/wp-content/uploads/2019/12/960x0-11-e1576486629882-740x370.jpg" alt="">
-          <% end %>
           <% if travel.seats_available > 0 %>
-            <li><%= link_to("#{travel.name_of_vehicle} for #{travel.destination}. Price : #{travel.price}. Places remaining : #{travel.seats_available}", travel_path(travel)) %></li>
+            <li>
+              <%= link_to travel_path(travel) do %>
+                <div class="card-img">
+                  <% if travel.photo.attached? %>
+                    <%= cl_image_tag(travel.photo.key, height: 300, width: 400, crop: :fill) %>
+                  <% else %>
+                    <img src="https://www.forbes.fr/wp-content/uploads/2019/12/960x0-11-e1576486629882-740x370.jpg" alt="">
+                  <% end %>
+                </div>
+                <div class="card-info">
+                  <p id="spaceship-name"> <%= "#{travel.name_of_vehicle} for #{travel.destination}."%></p>
+                  <p> <%= "Days before departure : #{(travel.departure_date - Date.today).to_i} days." %></p>
+                  <div class="card-info-flex">
+                    <p><%= "Places remaining : #{travel.seats_available}."%></p>
+                    <p><%= "Price : #{travel.price}."%></p>
+                  </div>
+                </div>
+              <% end %>
+            </li>
           <% else %>
            <li> <%= "#{travel.name_of_vehicle} for #{travel.destination}. Price : #{travel.price}. Sold out !" %>   </li>
           <% end %>
@@ -54,18 +98,4 @@
 <div class ="button-center">
  <%= link_to("back to homepage", root_path) %>
 </div>
-
-
-
-<div class="footer">
-  <div class="footer-links">
-    <a href="#"><i class="fab fa-github"></i></a>
-    <a href="#"><i class="fab fa-instagram"></i></a>
-    <a href="#"><i class="fab fa-facebook"></i></a>
-    <a href="#"><i class="fab fa-twitter"></i></a>
-    <a href="#"><i class="fab fa-linkedin"></i></a>
-  </div>
-  <div class="footer-copyright">
-    SpaceBnB is made with <i class="fas fa-rocket"></i> By Terri, Hugues, Will and Martin
-  </div>
 </div>

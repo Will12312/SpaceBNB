@@ -11,7 +11,15 @@ class TravelsController < ApplicationController
         lng: travel.longitude
       }
     end
+   if params[:query].present?
+      sql_query = "destination ILIKE :query OR name_of_vehicle ILIKE :query"
+      @travels = Travel.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @travels = Travel.all
+    end
   end
+
+
 
   def show
   end
@@ -47,6 +55,7 @@ class TravelsController < ApplicationController
       authorize @travel
       redirect_to travels_path
   end
+
 
    private
 
