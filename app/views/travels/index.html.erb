@@ -1,12 +1,28 @@
 <div class="navbar">
-  <img src="https://i.pinimg.com/originals/1c/65/73/1c6573b3a499605debb897bfc4d8074f.png" alt="">
-  <h4>SpaceBNB</h4>
-  <p>Market place for your <strong>Sol System</strong> voyage</p>
-  <img class="avatar" src="https://avatars0.githubusercontent.com/u/59450083?s=460&u=a968262b02616ba9015217afa11b2732e813c5e9&v=4" alt="">
-<%= link_to("sign in", new_user_session_path) %>
-<%= link_to("sign up", new_user_registration_path) %>
-<%= link_to("sign out",  destroy_user_session_path, method: :delete) %>
+  <div>
+    <img src="https://i.pinimg.com/originals/1c/65/73/1c6573b3a499605debb897bfc4d8074f.png" alt="">
+  </div>
+  <div>
+    <h4>SpaceBNB</h4>
+  </div>
+  <div class="right-navbar">
+    <% if user_signed_in? %>
+      <%= link_to("sign out",  destroy_user_session_path, method: :delete) %>
+      <img class="avatar" src="https://avatars0.githubusercontent.com/u/59450083?s=460&u=a968262b02616ba9015217afa11b2732e813c5e9&v=4" alt="">
+    <% else %>
+      <%= link_to("sign in", new_user_session_path) %>
+      <%= link_to("sign up", new_user_registration_path) %>
+    <% end %>
+
+  </div>
+
 </div>
+
+
+
+
+
+
 
 <div class ="container">
 
@@ -21,7 +37,11 @@
             <img src="https://www.forbes.fr/wp-content/uploads/2019/12/960x0-11-e1576486629882-740x370.jpg" alt="">
           <% end %>
           <% if travel.seats_available > 0 %>
-            <li><%= link_to("#{travel.name_of_vehicle} for #{travel.destination}. Price : #{travel.price}. Places remaining : #{travel.seats_available}", travel_path(travel)) %></li>
+            <li><%= link_to("#{travel.name_of_vehicle} for #{travel.destination}.
+            Price : #{travel.price}.
+            Places remaining : #{travel.seats_available}.
+            Days before departure : #{(travel.departure_date - Date.today).to_i} days.",
+            travel_path(travel)) %></li>
           <% else %>
            <li> <%= "#{travel.name_of_vehicle} for #{travel.destination}. Price : #{travel.price}. Sold out !" %>   </li>
           <% end %>

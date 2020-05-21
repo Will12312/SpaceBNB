@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2020_05_20_160903) do
     t.string "destination"
     t.integer "seats_available"
     t.integer "people_onboard", default: 0
-    t.string "departure_date"
+    t.date "departure_date"
     t.string "name_of_vehicle"
     t.integer "price"
     t.datetime "created_at", precision: 6, null: false
