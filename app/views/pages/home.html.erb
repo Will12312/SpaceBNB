@@ -1,14 +1,15 @@
-<div class="navbar">
-  <img src="https://i.pinimg.com/originals/1c/65/73/1c6573b3a499605debb897bfc4d8074f.png" alt="">
-  <h4>SpaceBNB</h4>
-  <img class="avatar" src="https://avatars0.githubusercontent.com/u/59450083?s=460&u=a968262b02616ba9015217afa11b2732e813c5e9&v=4" alt="">
+<div class="banner">
+  <div class="container">
+    <h1>SpaceBnB brings closer the Outer Space!</h1>
+    <p>Travel throught Space just in a clik.</p>
+    <a class="btn btn-flat"<%= link_to("All travels", travels_path) %>></a>
+  </div>
 </div>
-
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
 
 <%= link_to("sign in", new_user_session_path) %>
 <%= link_to("sign up", new_user_registration_path) %>
 <%= link_to("sign out",  destroy_user_session_path, method: :delete) %>
 
-<%= link_to("All travels", travels_path) %>
+<% Travel.last(10) do |travel| %>
+<li><%= travel.destination %></li>
+<%end%>
