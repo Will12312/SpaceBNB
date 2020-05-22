@@ -3,11 +3,25 @@
   <h4>SpaceBNB</h4>
   <img class="avatar" src="https://avatars0.githubusercontent.com/u/59450083?s=460&u=a968262b02616ba9015217afa11b2732e813c5e9&v=4" alt="">
 </div>
+<div>
+  <div class="card-booking" style=" padding:100px; background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0)); url: ""; >
+      <% if @travel.photo.attached? %>
+        <%= cl_image_tag(@travel.photo.key, height: 300, width: 400, crop: :fill) %>
+      <% else %>
+        <img src="https://www.forbes.fr/wp-content/uploads/2019/12/960x0-11-e1576486629882-740x370.jpg" alt="">
+        <% end %>
+  <div class="footer" style=" padding:100px; color: black; border-radius: 0px 0px 5px 5px ">
+    <div>
+      <br>
+      <h4><%="You are going to #{@travel.destination} on the  #{@travel.departure_date}"%></h4>
+      <p><%="#{@travel.organiser.first_name} will be you pilote onboard his #{@travel.name_of_vehicle} to  #{@travel.destination}."%></p>
+      <p><%=" Make sure to pay the transaction of #{@travel.price}" %><i class="fab fa-bitcoin"></i></p>
+    </div>
+  </div>
 
- <%="#{@travel.destination} #{@travel.departure_date}"%>
 
 <%= simple_form_for [@travel, @booking] do |f| %>
- <%= f.submit "Confirm your trip?", class: "btn btn-primary" %>
+<%= f.submit "Confirm your trip?", class: "btn btn-primary" %>
 <% end %>
 <br>
-<%= link_to("Cancel?", travel_path(@travel)) %>
+<%= link_to("Cancel?", travel_path(@travel),class: "btn btn-primary") %>

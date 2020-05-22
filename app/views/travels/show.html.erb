@@ -3,12 +3,14 @@
   <h4>SpaceBNB</h4>
   <img class="avatar" src="https://avatars0.githubusercontent.com/u/59450083?s=460&u=a968262b02616ba9015217afa11b2732e813c5e9&v=4" alt="">
 </div>
+<div class = "body" style = "background: linear-gradient(135deg, #01FFFF 0%, #EA5EDC 72%, #1E004C 100%)">
 
-<div class = "container">
+
+<div class = "container"  >
   <div>
-    <br>
+    <tr>
 
-<div class="card-product">
+<div class="card-product my-2">
 <% if @travel.photo.attached? %>
           <%= cl_image_tag(@travel.photo.key, height: 300, width: 400, crop: :fill) %>
            <% else %>
@@ -19,22 +21,12 @@
     <p><%= "#{@travel.organiser.first_name} is proposition #{@travel.seats_available} seats in his brand new #{@travel.name_of_vehicle} on the #{@travel.departure_date}" %></p>
   </div>
 </div>
+<a class="btn btn-primary my-1"<%= link_to("Book", new_travel_booking_path(@travel)) %></a>
 
-   <%= link_to("book this trip", new_travel_booking_path(@travel)) %>
 
-  <br>
+  <tr>
+<a class="btn btn-primary my-1"<%= link_to("Back", travels_path)%></a>
 
-    <%= link_to("Back to list", travels_path) %>
 
-<div class="footer">
-  <div class="footer-links">
-    <a href="#"><i class="fab fa-github"></i></a>
-    <a href="#"><i class="fab fa-instagram"></i></a>
-    <a href="#"><i class="fab fa-facebook"></i></a>
-    <a href="#"><i class="fab fa-twitter"></i></a>
-    <a href="#"><i class="fab fa-linkedin"></i></a>
-  </div>
-  <div class="footer-copyright">
-    SpaceBnB is made with <i class="fas fa-rocket"></i> By Terri, Hugues, Will and Martin
-  </div>
+</div>
 </div>

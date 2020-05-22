@@ -6,6 +6,10 @@ class BookingsController < ApplicationController
   def index
     @bookings = policy_scope(Booking).order(created_at: :desc)
     @travels = Travel.where(organiser:current_user)
+    respond_to do |format|
+      format.html
+      format.json { render json: { travels: @travels } }
+    end
   end
 
   def new
@@ -40,7 +44,7 @@ class BookingsController < ApplicationController
     @travel.people_onboard -= 1
     @travel.save
     authorize @booking
-    redirect_to travels_path
+    redirect_to bookings_path
   end
 
   private

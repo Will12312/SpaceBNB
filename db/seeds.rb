@@ -128,6 +128,7 @@ avengers.photo.attach(io: file5, filename: 'avengers.jpg', content_type: 'image/
     price: 20
     )
 
+
  file6 = URI.open('https://www.fictiontofact.com/files/media/52162/et.png')
 velo.photo.attach(io: file6, filename: 'et.jpg', content_type: 'image/jpg')
 
@@ -146,7 +147,7 @@ velo.photo.attach(io: file6, filename: 'et.jpg', content_type: 'image/jpg')
     organiser: luke,
     name_of_vehicle:"Millenium Falcon",
     price: 20000
-    )
+   )
 
  file7 = URI.open('https://cdn.shopify.com/s/files/1/1048/8552/products/mil_falcon_prem_large.png?v=1503316783')
 starwars1.photo.attach(io: file7, filename: 'falcon.png', content_type: 'image/png')

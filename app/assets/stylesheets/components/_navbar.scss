@@ -15,4 +15,24 @@
   img {
     width : 80px
   }
+  h4 {
+    color:white;
+  }
+}
+
+.right-navbar {
+  a {
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 6px;
+    color: white;
+  }
+  a:hover {
+    text-decoration: none;
+    color: lightgrey;
+    border: 1.2px solid lightgrey;
+  }
+  img {
+    margin-left: 5px;
+  }
 }

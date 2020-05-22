@@ -11,7 +11,23 @@ class TravelsController < ApplicationController
         lng: travel.longitude
       }
     end
+   if params[:query].present?
+      sql_query = "destination ILIKE :query OR name_of_vehicle ILIKE :query"
+      @travels = Travel.where(sql_query, query: "%#{params[:query]}%")
+        respond_to do |format|
+          format.html
+          format.json { render json: { travels: @travels } }
+        end
+
+    else
+      @travels = Travel.all
+        respond_to do |format|
+          format.html
+          format.json { render json: { travels: @travels } }
+        end
+    end
   end
+
 
   def show
   end
