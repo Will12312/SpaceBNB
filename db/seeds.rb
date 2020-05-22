@@ -52,8 +52,8 @@ file2 = URI.open('https://www.blueorigin.com/assets/BlueOrigin_NewShepard_Launch
 amazone.photo.attach(io: file2, filename: 'blueorigin.jpg', content_type: 'image/jpg')
 
  yoda = User.create!(
-    first_name: "Yo",
-    last_name: "da",
+    first_name: "Yoda",
+    last_name: "Master",
     username: "Jedi101",
     email: "yoda@theforce.org",
     password: "maytheforcebewithme",
@@ -112,8 +112,8 @@ file5 = URI.open('https://i.pinimg.com/originals/1f/39/4f/1f394f0d92a507de1ea9be
 avengers.photo.attach(io: file5, filename: 'avengers.jpg', content_type: 'image/jpg')
 
  et = User.create!(
-    first_name: "E .",
-    last_name: "T",
+    first_name: "E.T",
+    last_name: "the Extra-Terrestrial",
     username: "telephonemaison",
     email: "et@yahoo.com",
     password: "Spielberg",
@@ -161,7 +161,7 @@ starwars1.photo.attach(io: file7, filename: 'falcon.png', content_type: 'image/p
  delorean = Travel.create!(
     address: "Marocco",
     destination:["Mercury", "Venus", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune", "Earth", "Pluto"].sample,
-    seats_available: 5,
+    seats_available: 3,
     departure_date: "12-04-2021",
     organiser: marty,
     name_of_vehicle:"Delorean",
@@ -185,7 +185,7 @@ delorean.photo.attach(io: file8, filename: 'delorean.jpg', content_type: 'image/
     seats_available: 20,
     departure_date: "12-08-2020",
     organiser: han,
-    name_of_vehicle:"Proschecraft",
+    name_of_vehicle:"Porsche x Disney SpaceCraft",
     price: 30000
     )
 
@@ -202,7 +202,7 @@ porsche.photo.attach(io: file9, filename: 'porsche.jpg', content_type: 'image/jp
  startrek = Travel.create!(
     address: "Spain",
     destination:["Mercury", "Venus", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune", "Earth", "Pluto"].sample,
-    seats_available: 200,
+    seats_available: 6,
     departure_date: "25-05-2020",
     organiser: james,
     name_of_vehicle:"Star Trek Craft",
