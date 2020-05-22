@@ -3,16 +3,22 @@
   background: -moz-linear-gradient(-45deg, #01FFFF 0%, #EA5EDC 72%, #1E004C 100%);
   background: -webkit-linear-gradient(-45deg, #01FFFF 0%, #EA5EDC 72%, #1E004C 100%);
   background: linear-gradient(135deg, #01FFFF 0%, #EA5EDC 72%, #1E004C 100%);
+
 }
 .container-display {
   min-height: 150px;
   text-align: center;
+  padding: 25px 0;
+  text-align: center;
+
 }
 
 .container-top {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
+  padding-top: 40px;
+
 
 }
 
@@ -31,15 +37,17 @@
 }
 
 .card-top h2 {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: bold;
   margin: 0;
+
 }
 
 .card-top p {
   font-size: 12px;
   opacity: .7;
   margin: 0;
+
 }
 
 
