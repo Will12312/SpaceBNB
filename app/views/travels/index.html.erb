@@ -68,44 +68,28 @@
                     </div>
 
                     <div class="card-info">
-                      <% if travel.seats_available > 0 %>
-                      <p id="spaceship-name"> <%= "#{travel.name_of_vehicle} for #{travel.destination}."%></p>
-                      <p> <%= "Days before departure : #{(travel.departure_date - Date.today).to_i} days." %></p>
-                      <div class="card-info-flex">
-                        <p><%= "Places remaining : #{travel.seats_available}."%></p>
-                        <p><%= "Price : #{travel.price}."%></p>
-                      </div>
-                      <% else %>
-                      <div>
-                        <%= "#{travel.name_of_vehicle} for #{travel.destination}. Price : #{travel.price}. Sold out !" %>
+                        <% if travel.seats_available > 0 %>
+                          <p id="spaceship-name"> <%= "#{travel.name_of_vehicle} for #{travel.destination}."%></p>
+                          <p> <%= "Days before departure : #{(travel.departure_date - Date.today).to_i} days." %></p>
+                          <div class="card-info-flex">
+                            <p><%= "Places remaining : #{travel.seats_available}."%></p>
+                            <p><%= "Price : #{travel.price}"%> <i class="fab fa-bitcoin"></i>
+                          </div>
+                        <% else %>
+                        <div>
+                          <%= "#{travel.name_of_vehicle} for #{travel.destination}. Price : #{travel.price}. Sold out !" %>
+                        </div>
+                        <% end %>
+                        <% if policy(travel).edit?%>
+                          <%= link_to "Update", edit_travel_path(travel) %>
+                          <%= link_to("Delete", travel_path(travel), remote:true,  method: :delete) %>
+                        <% end %>
                       </div>
                       <% end %>
-                    </div>
-                  <% end %>
-
-                </div>
-                <div class="card-info">
-                  <p id="spaceship-name"> <%= "#{travel.name_of_vehicle} for #{travel.destination}."%></p>
-                  <p> <%= "Days before departure : #{(travel.departure_date - Date.today).to_i} days." %></p>
-                  <div class="card-info-flex">
-                    <p><%= "Places remaining : #{travel.seats_available}."%></p>
-                    <p><%= "Price : #{travel.price}"%> <i class="fab fa-bitcoin"></i>
+                    </li>
                   </div>
-                </div>
-              <% end %>
-            </li>
-          <% else %>
-           <li> <%= "#{travel.name_of_vehicle} for #{travel.destination}. Price : #{travel.price}. Sold out !" %>   </li>
-          
-
-              <% if policy(travel).edit?%>
-            <%= link_to "Update", edit_travel_path(travel) %>
-            <%= link_to("Delete", travel_path(travel), remote:true,  method: :delete) %>
-            <% end %>
-          </div>
-  
-          <% end %>
-        </div>
+                  <% end %>
+            </div>
       </ul>
 
       <div class="d-flex justify-content-center">
