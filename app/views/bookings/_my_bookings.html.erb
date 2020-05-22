@@ -1,0 +1,18 @@
+ <span data-target="countbookings.countbookings">
+
+  <% total_money = 0 %>
+  <% my_bookings.each do |travel, my_bookings| %>
+  <li>
+    <h5><%="#{travel.name_of_vehicle}"%></h5>
+    <%="Your spaceship has #{travel.seats_available} seats available and #{travel.people_onboard} people on board." %>
+    <%="With this spaceship, you are earning a total of #{travel.people_onboard * travel.price}€."%>
+
+    <% total_money += travel.people_onboard * travel.price %>
+  </li>
+
+  <% end %>
+
+  <div class="my-ship">
+      <h6 class="fix-bottom"><%= "Your total earning is #{total_money}€." %></h6>
+   </div>
+</span>

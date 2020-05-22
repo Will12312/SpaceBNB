@@ -20,24 +20,11 @@
     <div class="my-ship">
     <h4>My Spaceship Management</h4>
     </div>
-         <% total_money = 0 %>
-        <% @my_bookings.each do |travel, my_bookings| %>
           <div data-controller="countbookings">
-              <span data-target="countbookings.countbookings">
-                <li>
-                  <h5><%="#{travel.name_of_vehicle}"%></h5>
-                  <%="Your spaceship has #{travel.seats_available} seats available and #{travel.people_onboard} people on board." %>
-                  <%="With this spaceship, you are earning a total of #{travel.people_onboard * travel.price}€."%>
-
-                  <% total_money += travel.people_onboard * travel.price %>
-                </li>
-              </span>
+            <%= render partial: "bookings/my_bookings", locals: { my_bookings: @my_bookings} %>
           </div>
 
-        <% end %>
-        <div class="my-ship">
-        <h6 class="fix-bottom"><%= "Your total earning is #{total_money}€." %></h6>
-        </div>
+
   </div>
 
 </div>
