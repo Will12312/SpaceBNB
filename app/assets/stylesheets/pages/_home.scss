@@ -1,1 +1,38 @@
 // Specific CSS for your home-page
+
+h2 {
+ color:purple;
+ font-size: 56px;
+ font-weight:bold;
+
+}
+
+.btn-light {
+  font-weight: medium;
+  color:black;
+}
+
+.footer {
+ overflow: hidden;
+}
+
+.card-info {
+      padding:10px;
+}
+
+#spaceship-name {
+        text-align:center;
+        padding-top: 5px;
+        margin: 0px;
+        font-weight: bold;
+        font-style: italic;
+}
+
+.card-info-flex {
+        display:flex;
+        justify-content: space-between;
+      }
+
+.fa-bitcoin {
+  font-size: 10px;
+}

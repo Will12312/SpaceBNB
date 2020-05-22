@@ -1,13 +1,13 @@
 <div class="banner">
   <div class="container">
-    <h1>SpaceBnB brings closer the Outer Space!</h1>
-    <p>Travel throught Space just in a clik.</p>
-    <a class="btn btn-flat"<%= link_to("All travels", travels_path)%></a>
+    <h1>SpaceBnB bringing you closer to Outer Space!</h1>
+    <p><strong>Travel through space in just a click<strong></p>
+    <a class="btn btn-light"<%= link_to("See travels", travels_path)%></a>
   </div>
 </div>
 
 <div class="container-display">
-  <h2>Going Somewhere at speed light?</h2>
+  <h2><i class="fas fa-rocket"></i> Travel at the speed of light</h2>
 <div class="container-top">
 <% Travel.last(9).each do |travel| %>
 <div class="card-top">
@@ -16,11 +16,13 @@
            <% else %>
             <img src="https://www.forbes.fr/wp-content/uploads/2019/12/960x0-11-e1576486629882-740x370.jpg" alt="">
   <% end %>
-  <div class="card-top-infos">
-    <h2><%= link_to("#{travel.destination} for #{travel.organiser.first_name}", travel_path(travel)) %></h2>
-    <p><%= "#{travel.organiser.first_name} is proposition #{travel.seats_available} seats in his brand new #{travel.name_of_vehicle} on the #{travel.departure_date}" %></p>
+  <div class="card-info">
+    <h2><%= link_to("#{travel.destination} - #{travel.organiser.first_name}", travel_path(travel)) %></h2>
+    <p><%= "#{travel.name_of_vehicle}, #{travel.seats_available} seats, departing #{travel.departure_date}" %></p>
+     <p><%= "Price : #{travel.price}"%> <i class="fab fa-bitcoin"></i>
   </div>
 </div>
 <%end%>
 </div>
 </div>
+
