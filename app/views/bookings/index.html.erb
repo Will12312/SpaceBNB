@@ -1,33 +1,33 @@
 <h1>my bookings</h1>
 <br>
 <div class="flex-box">
-  <div>
+  <div class="card">
+    <div class="my-ship">
     <h4>My futur travels</h4>
-    <ul>
+    </div>
+    <ul class="list-group list-group-flush">
       <% @bookings.each do |booking| %>
-        <li><%= "#{booking.user.first_name} is going to #{booking.travel.destination}" %></li>
+        <li class="card-dash-infos list-group-item d-flex justify-content-between"><%= "#{booking.user.first_name} is going to #{booking.travel.destination}" %>
         <% if policy(Booking).destroy? %>
-       <%= link_to("delete the booking", booking_path(booking), method: :delete) %>
+       <%= link_to("delete the booking", booking_path(booking), remote: true, method: :delete) %>
+
        <%end%>
+       </li>
       <% end %>
     </ul>
   </div>
-  <div>
-    <h4>My spaceship management</h4>
-      <ul>
-         <% total_money = 0 %>
-        <% @travels.each do |travel| %>
-          <li>
-              <h5><%="#{travel.name_of_vehicle}"%></h5>
-            <%="Your spaceship has #{travel.seats_available} seats available and #{travel.people_onboard} people on board." %>
-            <%="With this spaceship, you are earning a total of #{travel.people_onboard * travel.price}€."%>
-            <% total_money += travel.people_onboard * travel.price %>
-          </li>
-        <% end %>
-      </ul>
-      <%= "Your total earning is #{total_money}€." %>
+  <div class="card">
+    <div class="my-ship">
+    <h4>My Spaceship Management</h4>
+    </div>
+          <div data-controller="countbookings">
+            <%= render partial: "bookings/my_bookings", locals: { my_bookings: @my_bookings} %>
+          </div>
+
+
   </div>
 
 </div>
 <br>
-<%= link_to("Back to all travels", travels_path) %>
+
+<a class="btn btn-primary"><%= link_to("Back to all travels", travels_path) %></a>

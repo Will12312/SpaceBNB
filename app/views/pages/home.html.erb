@@ -1,10 +1,20 @@
 <div class="banner">
   <div class="container">
+
     <h1>SpaceBnB bringing you closer to Outer Space!</h1>
     <p><strong>Travel through space in just a click<strong></p>
     <a class="btn btn-light"<%= link_to("See travels", travels_path)%></a>
+
   </div>
 </div>
+
+
+<div class="flex-center mt-4" data-controller="counter">
+  <div class="counter">
+    <span data-target="counter.count"><%= @travels_count %></span>
+  </div>
+</div>
+
 
 <div class="container-display">
   <h2><i class="fas fa-rocket"></i> Travel at the speed of light</h2>

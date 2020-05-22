@@ -7,6 +7,11 @@
     <h4>SpaceBNB</h4>
   </div>
   <div class="right-navbar">
+    <div data-controller="counter">
+      <div class="counter">
+      <span data-target="counter.count"><%= @travels_count %></span>
+      </div>
+    </div>
     <% if user_signed_in? %>
       <%= link_to("sign out",  destroy_user_session_path, method: :delete) %>
       <img class="avatar" src="https://avatars0.githubusercontent.com/u/59450083?s=460&u=a968262b02616ba9015217afa11b2732e813c5e9&v=4" alt="">
@@ -47,20 +52,37 @@
 
 
 
-<br>
-    <ul>
-      <div class="travel-cards" >
-    <% @travels.each do |travel| %>
-      <div class="travel-card" >
-          <% if travel.seats_available > 0 %>
-            <li>
-              <%= link_to travel_path(travel) do %>
-                <div class="card-img">
-                  <% if travel.photo.attached? %>
-                    <%= cl_image_tag(travel.photo.key, height: 300, width: 400, crop: :fill) %>
-                  <% else %>
-                    <img src="https://www.forbes.fr/wp-content/uploads/2019/12/960x0-11-e1576486629882-740x370.jpg" alt="">
+    <br>
+        <ul>
+          <div class="travel-cards" >
+        <% @travels.each do |travel| %>
+          <div class="travel-card" >
+                <li>
+                  <%= link_to travel_path(travel) do %>
+                    <div class="card-img">
+                      <% if travel.photo.attached? %>
+                        <%= cl_image_tag(travel.photo.key, height: 300, width: 400, crop: :fill) %>
+                      <% else %>
+                        <img src="https://www.forbes.fr/wp-content/uploads/2019/12/960x0-11-e1576486629882-740x370.jpg" alt="">
+                      <% end %>
+                    </div>
+
+                    <div class="card-info">
+                      <% if travel.seats_available > 0 %>
+                      <p id="spaceship-name"> <%= "#{travel.name_of_vehicle} for #{travel.destination}."%></p>
+                      <p> <%= "Days before departure : #{(travel.departure_date - Date.today).to_i} days." %></p>
+                      <div class="card-info-flex">
+                        <p><%= "Places remaining : #{travel.seats_available}."%></p>
+                        <p><%= "Price : #{travel.price}."%></p>
+                      </div>
+                      <% else %>
+                      <div>
+                        <%= "#{travel.name_of_vehicle} for #{travel.destination}. Price : #{travel.price}. Sold out !" %>
+                      </div>
+                      <% end %>
+                    </div>
                   <% end %>
+
                 </div>
                 <div class="card-info">
                   <p id="spaceship-name"> <%= "#{travel.name_of_vehicle} for #{travel.destination}."%></p>
@@ -74,14 +96,31 @@
             </li>
           <% else %>
            <li> <%= "#{travel.name_of_vehicle} for #{travel.destination}. Price : #{travel.price}. Sold out !" %>   </li>
+          
+
+              <% if policy(travel).edit?%>
+            <%= link_to "Update", edit_travel_path(travel) %>
+            <%= link_to("Delete", travel_path(travel), remote:true,  method: :delete) %>
+            <% end %>
+          </div>
+  
           <% end %>
-          <% if policy(travel).edit?%>
-        <%= link_to "Update", edit_travel_path(travel) %>
-        <%= link_to("Delete", travel_path(travel), method: :delete) %>
-        <% end %>
-      </div>
-      <% end %>
+        </div>
+      </ul>
+
+      <div class="d-flex justify-content-center">
+       <div id="map" class="py-2"
+       style="width: 100%; height: 600px;"
+       data-markers="<%= @markers.to_json %>"
+       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+     </div>
+
+     <div class ="button-center">
+      <% if policy(Travel).create? %>
+      <%= link_to("add a new travel", new_travel_path) %>
+      <%end%>
     </div>
+
   </ul>
 
   <div class="d-flex justify-content-center">
@@ -90,5 +129,4 @@
    data-markers="<%= @markers.to_json %>"
    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
  </div>
-
 

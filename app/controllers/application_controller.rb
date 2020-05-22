@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_counter
   include Pundit
 
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
@@ -20,7 +21,13 @@ class ApplicationController < ActionController::Base
 #    redirect_to(root_path)
 #  end
 
+
+
   private
+
+  def set_counter
+    @travels_count = Travel.count
+  end
 
   def skip_pundit?
     # not sur about this line
