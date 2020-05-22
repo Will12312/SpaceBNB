@@ -11,7 +11,12 @@ export default class extends Controller {
     fetch('/bookings', { headers: { accept: "application/json" }})
       .then(response => response.json())
       .then((data) => {
-        this.countbookingsTarget.innerText = data.travels;
+        console.log(data.my_bookings)
+        const variable = [...data.my_bookings]
+        variable.ForEach(my_booking => {
+          console.log(my_booking)
+        })
+         // this.countbookingsTarget.innerHtml = data.my_bookings;
       });
   }
 }

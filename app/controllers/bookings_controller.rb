@@ -5,10 +5,10 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = policy_scope(Booking).order(created_at: :desc)
-    @travels = Travel.where(organiser:current_user)
+    @my_bookings = Booking.joins(:travel).where(travels: {organiser:current_user}).group_by(&:travel)
     respond_to do |format|
       format.html
-      format.json { render json: { travels: @travels } }
+      format.json { render json: { my_bookings: @my_bookings.keys } }
     end
   end
 
