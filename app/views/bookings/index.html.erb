@@ -9,7 +9,7 @@
       <% @bookings.each do |booking| %>
         <li class="card-dash-infos list-group-item d-flex justify-content-between"><%= "#{booking.user.first_name} is going to #{booking.travel.destination}" %>
         <% if policy(Booking).destroy? %>
-       <a <%= link_to("Delete", booking_path(booking), method: :delete) %></a>
+       <%= link_to("delete the booking", booking_path(booking), remote: true, method: :delete) %>
 
        <%end%>
        </li>
@@ -22,14 +22,18 @@
     </div>
          <% total_money = 0 %>
         <% @travels.each do |travel| %>
-      <div class="my-ship">
-        <h5><%="#{travel.name_of_vehicle}"%></h5>
-      <div>
-            <p><%="#{travel.seats_available} seats available"%> | <%="#{travel.people_onboard} people on board" %></p>
-            <p><%="Total earnings : #{travel.people_onboard * travel.price}"%></p>
-            <% total_money += travel.people_onboard * travel.price %>
-      </div>
-      </div>
+
+          <div data-controller="countbookings">
+              <span data-target="countbookings.countbookings">
+                <li>
+                  <h5><%="#{travel.name_of_vehicle}"%></h5>
+                  <%="Your spaceship has #{travel.seats_available} seats available and #{travel.people_onboard} people on board." %>
+                  <%="With this spaceship, you are earning a total of #{travel.people_onboard * travel.price}€."%>
+                  <% total_money += travel.people_onboard * travel.price %>
+                </li>
+              </span>
+          </div>
+
         <% end %>
         <div class="my-ship">
         <h6 class="fix-bottom"><%= "Your total earning is #{total_money}€." %></h6>
@@ -38,5 +42,5 @@
 
 </div>
 <br>
-<a class="btn btn-primary"<%= link_to("Back to all travels", travels_path) %></a>
 
+<a class="btn btn-primary"<%= link_to("Back to all travels", travels_path) %></a>
