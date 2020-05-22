@@ -11,12 +11,18 @@ export default class extends Controller {
     fetch('/bookings', { headers: { accept: "application/json" }})
       .then(response => response.json())
       .then((data) => {
-        console.log(data.my_bookings)
-        const variable = [...data.my_bookings]
-        variable.ForEach(my_booking => {
-          console.log(my_booking)
-        })
+        console.log(data)
+        // 1. select the partial that has the bookings
+        //this.countbookingsTarget.innerHTML =
+        // 2. replace it with the new innerHTML
+        //for (let i in data.my_bookings) {
+         // console.log(data.my_bookings[i])
+        //}
+        // const variable = [...data.my_bookings]
+        // variable.map.ForEach(my_booking => {
+        //   console.log(my_booking)
+        // })
          // this.countbookingsTarget.innerHtml = data.my_bookings;
       });
+    }
   }
-}
