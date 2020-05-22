@@ -7,7 +7,7 @@
       <% @bookings.each do |booking| %>
         <li><%= "#{booking.user.first_name} is going to #{booking.travel.destination}" %></li>
         <% if policy(Booking).destroy? %>
-       <%= link_to("delete the booking", booking_path(booking), method: :delete) %>
+       <%= link_to("delete the booking", booking_path(booking), remote: true, method: :delete) %>
        <%end%>
       <% end %>
     </ul>
@@ -17,12 +17,16 @@
       <ul>
          <% total_money = 0 %>
         <% @travels.each do |travel| %>
-          <li>
-              <h5><%="#{travel.name_of_vehicle}"%></h5>
-            <%="Your spaceship has #{travel.seats_available} seats available and #{travel.people_onboard} people on board." %>
-            <%="With this spaceship, you are earning a total of #{travel.people_onboard * travel.price}€."%>
-            <% total_money += travel.people_onboard * travel.price %>
-          </li>
+          <div data-controller="countbookings">
+              <span data-target="countbookings.countbookings">
+                <li>
+                  <h5><%="#{travel.name_of_vehicle}"%></h5>
+                  <%="Your spaceship has #{travel.seats_available} seats available and #{travel.people_onboard} people on board." %>
+                  <%="With this spaceship, you are earning a total of #{travel.people_onboard * travel.price}€."%>
+                  <% total_money += travel.people_onboard * travel.price %>
+                </li>
+              </span>
+          </div>
         <% end %>
       </ul>
       <%= "Your total earning is #{total_money}€." %>
@@ -31,3 +35,5 @@
 </div>
 <br>
 <%= link_to("Back to all travels", travels_path) %>
+
+
